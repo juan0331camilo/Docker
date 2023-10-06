@@ -1,0 +1,15 @@
+version: '3'
+services:
+  dockerapp:   
+    image: juan0331camilo/api-dotnet-dockerapp
+    container_name: dockerapp-compose
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 8080:80
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 3s
+        max_attempts: 5
+        window: 60s
